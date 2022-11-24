@@ -2,10 +2,12 @@ package swa.control.person;
 
 import java.util.List;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import swa.entity.Person;
 
+@ApplicationScoped
 public class PersonService {
     @Inject
     PersonManagement personManagement;

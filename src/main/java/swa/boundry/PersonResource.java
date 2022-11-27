@@ -19,7 +19,6 @@ import javax.ws.rs.core.Response;
 
 import swa.control.person.PersonService;
 import swa.entity.Person;
-import swa.entity.Type;
 import swa.entity.dto.PersonDTO;
 
 @Path("/Persons")
@@ -32,9 +31,9 @@ public class PersonResource {
 
     @PostConstruct
     public void init() {
-        personService.createTeamMember("Ronaldo", Type.PLAYER.name());
-        personService.createTeamMember("Messi", Type.PLAYER.name());
-        personService.createTeamMember("Neymar", Type.PLAYER.name());
+        personService.createTeamMember("Ronaldo", "Player");
+        personService.createTeamMember("Messi", "Player");
+        personService.createTeamMember("Neymar", "Player");
     }
 
     @GET

@@ -8,8 +8,8 @@ public class Team {
     String name;
     String catagory;
 
-    Person manager = new Person();
-    List<Person> players = new ArrayList<>();
+    Person manager;
+    List<Person> players;
 
     public Team() {
     }
@@ -61,6 +61,9 @@ public class Team {
     }
 
     public boolean addPlayer(Person player) {
+        if (players == null) {
+            players = new ArrayList<>();
+        }
         for (Person person : players) {
             if (person.getId() == player.getId()) {
                 return false;

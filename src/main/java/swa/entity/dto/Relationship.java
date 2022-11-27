@@ -11,6 +11,11 @@ public class Relationship {
     public Relationship() {
     }
 
+    public Relationship(Person manager, List<Person> players) {
+        this.manager = manager;
+        this.players = players;
+    }
+
     public Person getManager() {
         return manager;
     }

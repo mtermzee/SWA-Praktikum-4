@@ -1,7 +1,6 @@
 package swa.entity.dto;
 
 import swa.entity.Team;
-import swa.entity.Type;
 
 public class TeamDTO extends DataObject {
 
@@ -10,8 +9,11 @@ public class TeamDTO extends DataObject {
 
     public TeamDTO(Team other) {
         this.id = other.getId();
-        this.type = Type.TEAM.name();
+        this.type = "Team";
         this.attributes = new Attribute(other.getName(), other.getCatagory());
+        if (other.getManager() != null || other.getPlayers() != null) {
+            this.relationships = new Relationship(other.getManager(), other.getPlayers());
+        }
     }
 
     @Override

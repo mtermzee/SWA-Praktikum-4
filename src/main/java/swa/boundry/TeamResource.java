@@ -69,7 +69,7 @@ public class TeamResource {
     }
 
     @POST
-    @Path("{teamID}/{personID}")
+    @Path("{teamID}/relationships/{personID}")
     public Response addTeamMember(@PathParam("teamID") int teamID, @PathParam("personID") int personID) {
         boolean result = this.teamService.addMemberToTeam(teamID, personID);
         if (result)
@@ -94,9 +94,9 @@ public class TeamResource {
     }
 
     @DELETE
-    @Path("{teamID}/{personID}")
-    public Response deleteTeamMember(@PathParam("teamID") int teamID, @PathParam("personID") int personID) {
-        this.teamService.removeMemberFromTeam(teamID, personID);
+    @Path("{teamID}/relationships/{playerID}")
+    public Response deleteTeamMember(@PathParam("teamID") int teamID, @PathParam("playerID") int playerID) {
+        this.teamService.removeMemberFromTeam(teamID, playerID);
         return Response.ok().build();
     }
 

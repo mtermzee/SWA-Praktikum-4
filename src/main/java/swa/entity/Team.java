@@ -73,6 +73,19 @@ public class Team {
         return true;
     }
 
+    public boolean removePlayer(int id) {
+        if (players == null) {
+            return false;
+        }
+        for (Person person : players) {
+            if (person.getId() == id) {
+                players.remove(person);
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         return "Team [id=" + id + ", name=" + name + ", catagory=" + catagory + ", manager=" + manager + ", players="

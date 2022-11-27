@@ -74,7 +74,7 @@ public class TeamRepository implements TeamManagement, PersonManagement {
         if (teams.containsKey(teamId) && persons.containsKey(memberId)) {
             Team team = teams.get(teamId);
             Person person = persons.get(memberId);
-            System.out.println(person.getType().toLowerCase());
+
             if (person.getType().toLowerCase().equals("manager")) {
                 team.setManager(person);
                 return true;
@@ -87,8 +87,12 @@ public class TeamRepository implements TeamManagement, PersonManagement {
 
     @Override
     public boolean removeMemberFromTeam(int teamId, int memberId) {
-        // TODO Auto-generated method stub
+        if (teams.containsKey(teamId) && persons.containsKey(memberId)) {
+            Team team = teams.get(teamId);
+            return team.removePlayer(memberId);
+        }
         return false;
+
     }
 
     @Override

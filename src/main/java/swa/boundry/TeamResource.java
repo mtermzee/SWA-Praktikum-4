@@ -89,6 +89,13 @@ public class TeamResource {
         return Response.ok().build();
     }
 
+    @DELETE
+    @Path("{teamID}/{personID}")
+    public Response deleteTeamMember(@PathParam("teamID") int teamID, @PathParam("personID") int personID) {
+        this.teamService.removeMemberFromTeam(teamID, personID);
+        return Response.ok().build();
+    }
+
     public TeamDTO convertToDTO(Team team) {
         TeamDTO teamDTO = new TeamDTO(team);
         return teamDTO;

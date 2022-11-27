@@ -37,7 +37,6 @@ public class TeamService {
     }
 
     public boolean removeMemberFromTeam(int teamId, int memberId) {
-        // TODO Auto-generated method stub
-        return false;
+        return teamManagement.removeMemberFromTeam(teamId, memberId);
     }
 }

@@ -14,7 +14,13 @@ public interface TeamManagement {
 
     public Team getTeam(int id);
 
-    public List<Team> getAllTeams();
+    public List<Team> getAllTeams(String name, String catagory);
 
     public boolean addMemberToTeam(int teamId, int memberId);
+
+    public boolean removeMemberFromTeam(int teamId, int memberId);
+
+    public List<Team> filterByName(List<Team> teams, String name);
+
+    public List<Team> filterByCategory(List<Team> teams, String category);
 }

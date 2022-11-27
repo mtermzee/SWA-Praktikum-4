@@ -28,11 +28,16 @@ public class TeamService {
         return teamManagement.getTeam(id);
     }
 
-    public List<Team> getAllTeams() {
-        return teamManagement.getAllTeams();
+    public List<Team> getAllTeams(String name, String catagory) {
+        return teamManagement.getAllTeams(name, catagory);
     }
 
     public boolean addMemberToTeam(int teamId, int memberId) {
         return teamManagement.addMemberToTeam(teamId, memberId);
+    }
+
+    public boolean removeMemberFromTeam(int teamId, int memberId) {
+        // TODO Auto-generated method stub
+        return false;
     }
 }

@@ -1,5 +1,6 @@
 package swa.gateway;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -57,8 +58,15 @@ public class TeamRepository implements TeamManagement, PersonManagement {
     }
 
     @Override
-    public List<Team> getAllTeams() {
-        return List.copyOf(teams.values());
+    public List<Team> getAllTeams(String name, String catagory) {
+        List<Team> filteredTeams = List.copyOf(teams.values());
+        if (name != null && !name.equals("")) {
+            filteredTeams = filterByName(filteredTeams, name);
+        }
+        if (catagory != null && !catagory.equals("")) {
+            filteredTeams = filterByCategory(filteredTeams, catagory);
+        }
+        return filteredTeams;
     }
 
     @Override
@@ -75,6 +83,34 @@ public class TeamRepository implements TeamManagement, PersonManagement {
             return team.addPlayer(person);
         }
         return false;
+    }
+
+    @Override
+    public boolean removeMemberFromTeam(int teamId, int memberId) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public List<Team> filterByName(List<Team> teams, String name) {
+        List<Team> filteredTeams = new ArrayList<>();
+        for (Team team : teams) {
+            if (team.getName().toLowerCase().equals(name.toLowerCase())) {
+                filteredTeams.add(team);
+            }
+        }
+        return filteredTeams;
+    }
+
+    @Override
+    public List<Team> filterByCategory(List<Team> teams, String category) {
+        List<Team> filteredTeams = new ArrayList<>();
+        for (Team team : teams) {
+            if (team.getCatagory().toLowerCase().equals(category.toLowerCase())) {
+                filteredTeams.add(team);
+            }
+        }
+        return filteredTeams;
     }
 
     @Override

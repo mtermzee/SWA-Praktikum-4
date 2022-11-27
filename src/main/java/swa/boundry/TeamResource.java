@@ -37,12 +37,14 @@ public class TeamResource {
     }
 
     @GET
-    public Response getTeams() {
-        List<Team> teams = this.teamService.getAllTeams();
+    public Response getTeams(@QueryParam("filter[name]") String name,
+            @QueryParam("category[category]") String category) {
+        List<Team> teams = this.teamService.getAllTeams(name, category);
         if (teams.isEmpty()) {
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.status(Response.Status.NOT_FOUND).entity("not found!").type("text/plain").build();
         }
         return Response.ok(convertToDTO(teams)).build();
+
     }
 
     @GET

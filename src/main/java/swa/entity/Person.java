@@ -8,10 +8,10 @@ public class Person {
     public Person() {
     }
 
-    public Person(int id, String type, String name) {
+    public Person(int id, String name, String type) {
         this.id = id;
-        this.type = type;
         this.name = name;
+        this.type = type;
     }
 
     public int getId() {
@@ -36,6 +36,11 @@ public class Person {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Person [id=" + id + ", type=" + type + ", name=" + name + "]";
     }
 
 }

@@ -60,8 +60,20 @@ public class Team {
         this.players = players;
     }
 
-    public void addPlayer(Person player) {
+    public boolean addPlayer(Person player) {
+        for (Person person : players) {
+            if (person.getId() == player.getId()) {
+                return false;
+            }
+        }
         players.add(player);
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Team [id=" + id + ", name=" + name + ", catagory=" + catagory + ", manager=" + manager + ", players="
+                + players + "]";
     }
 
 }

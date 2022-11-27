@@ -66,18 +66,19 @@ public class TeamRepository implements TeamManagement, PersonManagement {
         if (teams.containsKey(teamId) && persons.containsKey(memberId)) {
             Team team = teams.get(teamId);
             Person person = persons.get(memberId);
-            team.addPlayer(person);
-            return true;
+            return team.addPlayer(person);
         }
         return false;
     }
 
     @Override
     public boolean createTeamMember(String name, String Type) {
+        System.out.println("createTeamMember");
         if (name == null || Type == null) {
             return false;
         }
-        Person person = new Person(availableTeamID++, name, Type);
+        System.out.println("nach if");
+        Person person = new Person(availablePersonID++, name, Type);
         persons.put(person.getId(), person);
         return true;
     }

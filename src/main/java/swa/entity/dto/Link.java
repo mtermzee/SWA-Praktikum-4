@@ -59,4 +59,10 @@ public class Link {
         this.related = related;
     }
 
+    @Override
+    public String toString() {
+        return "Link [first=" + first + ", prev=" + prev + ", next=" + next + ", last=" + last + ", self=" + self
+                + ", related=" + related + "]";
+    }
+
 }

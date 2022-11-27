@@ -13,4 +13,9 @@ public class TeamDTO extends DataObject {
         this.type = Type.TEAM.name();
         this.attributes = new Attribute(other.getName(), other.getCatagory());
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

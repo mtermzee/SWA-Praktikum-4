@@ -1,5 +1,6 @@
 package swa.boundry;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -18,6 +19,7 @@ import javax.ws.rs.core.Response;
 
 import swa.control.team.TeamService;
 import swa.entity.Team;
+import swa.entity.dto.TeamDTO;
 
 @Path("/Teams")
 @Produces(MediaType.APPLICATION_JSON)
@@ -40,7 +42,11 @@ public class TeamResource {
         if (teams.isEmpty()) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        return Response.ok(teams).build();
+        List<TeamDTO> teamDTOs = new ArrayList<>();
+        for (Team team : teams) {
+            teamDTOs.add(new TeamDTO(team));
+        }
+        return Response.ok(teamDTOs).build();
     }
 
     @GET
@@ -50,7 +56,8 @@ public class TeamResource {
         if (team == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        return Response.ok(team).build();
+        TeamDTO teamDTO = new TeamDTO(team);
+        return Response.ok(teamDTO).build();
     }
 
     @POST

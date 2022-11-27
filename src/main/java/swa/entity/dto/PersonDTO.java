@@ -13,4 +13,9 @@ public class PersonDTO extends DataObject {
         this.attributes = new Attribute(other.getName());
     }
 
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+
 }

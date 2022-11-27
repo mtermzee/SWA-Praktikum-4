@@ -1,5 +1,6 @@
 package swa.boundry;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -19,6 +20,7 @@ import javax.ws.rs.core.Response;
 import swa.control.person.PersonService;
 import swa.entity.Person;
 import swa.entity.Type;
+import swa.entity.dto.PersonDTO;
 
 @Path("/Persons")
 @Produces(MediaType.APPLICATION_JSON)
@@ -41,7 +43,12 @@ public class PersonResource {
         if (persons.isEmpty()) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        return Response.ok(persons).build();
+        List<PersonDTO> personDTOs = new ArrayList<>();
+        for (Person person : persons) {
+            personDTOs.add(new PersonDTO(person));
+        }
+
+        return Response.ok(personDTOs).build();
     }
 
     @GET
@@ -51,7 +58,8 @@ public class PersonResource {
         if (person == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        return Response.ok(person).build();
+        PersonDTO personDTO = new PersonDTO(person);
+        return Response.ok(personDTO).build();
     }
 
     @POST

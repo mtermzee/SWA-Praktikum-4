@@ -19,6 +19,8 @@ import javax.ws.rs.core.Response;
 
 import swa.control.person.PersonService;
 import swa.entity.Person;
+import swa.entity.dto.Data;
+import swa.entity.dto.DataObject;
 import swa.entity.dto.PersonDTO;
 
 @Path("/Persons")
@@ -43,7 +45,9 @@ public class PersonResource {
         if (persons.isEmpty()) {
             return Response.status(Response.Status.NOT_FOUND).entity("not found!").type("text/plain").build();
         }
-        return Response.ok(convertToDTO(persons)).build();
+
+        Data data = showUnderData(convertToDTO(persons));
+        return Response.ok(data).build();
     }
 
     @GET
@@ -53,7 +57,8 @@ public class PersonResource {
         if (person == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        return Response.ok(convertToDTO(person)).build();
+        Data data = showUnderData(convertToDTO(person));
+        return Response.ok(data).build();
     }
 
     @POST
@@ -97,5 +102,19 @@ public class PersonResource {
             personDTOs.add(convertToDTO(person));
         }
         return personDTOs;
+    }
+
+    public Data showUnderData(List<PersonDTO> personDTOs) {
+        List<DataObject> dataObjects = new ArrayList<>();
+        for (PersonDTO personDTO : personDTOs) {
+            dataObjects.add(personDTO);
+        }
+        Data data = new Data(dataObjects);
+        return data;
+    }
+
+    public Data showUnderData(PersonDTO personDTO) {
+        Data data = new Data(personDTO);
+        return data;
     }
 }

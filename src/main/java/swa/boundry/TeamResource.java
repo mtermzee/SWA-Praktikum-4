@@ -19,6 +19,8 @@ import javax.ws.rs.core.Response;
 
 import swa.control.team.TeamService;
 import swa.entity.Team;
+import swa.entity.dto.Data;
+import swa.entity.dto.DataObject;
 import swa.entity.dto.TeamDTO;
 
 @Path("/Teams")
@@ -43,7 +45,8 @@ public class TeamResource {
         if (teams.isEmpty()) {
             return Response.status(Response.Status.NOT_FOUND).entity("not found!").type("text/plain").build();
         }
-        return Response.ok(convertToDTO(teams)).build();
+        Data data = showUnderData(convertToDTO(teams));
+        return Response.ok(data).build();
 
     }
 
@@ -54,7 +57,8 @@ public class TeamResource {
         if (team == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        return Response.ok(convertToDTO(team)).build();
+        Data data = showUnderData(convertToDTO(team));
+        return Response.ok(data).build();
     }
 
     @POST
@@ -107,6 +111,20 @@ public class TeamResource {
             teamDTOs.add(convertToDTO(team));
         }
         return teamDTOs;
+    }
+
+    public Data showUnderData(List<TeamDTO> teamDTOs) {
+        List<DataObject> dataObjects = new ArrayList<>();
+        for (TeamDTO teamDTO : teamDTOs) {
+            dataObjects.add(teamDTO);
+        }
+        Data data = new Data(dataObjects);
+        return data;
+    }
+
+    public Data showUnderData(TeamDTO teamDTO) {
+        Data data = new Data(teamDTO);
+        return data;
     }
 
 }

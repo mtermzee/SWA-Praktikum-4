@@ -43,12 +43,7 @@ public class PersonResource {
         if (persons.isEmpty()) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        List<PersonDTO> personDTOs = new ArrayList<>();
-        for (Person person : persons) {
-            personDTOs.add(new PersonDTO(person));
-        }
-
-        return Response.ok(personDTOs).build();
+        return Response.ok(convertToDTO(persons)).build();
     }
 
     @GET
@@ -58,8 +53,7 @@ public class PersonResource {
         if (person == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        PersonDTO personDTO = new PersonDTO(person);
-        return Response.ok(personDTO).build();
+        return Response.ok(convertToDTO(person)).build();
     }
 
     @POST
@@ -90,5 +84,18 @@ public class PersonResource {
         }
         this.personService.deleteTeamMember(person.getId());
         return Response.ok().build();
+    }
+
+    public PersonDTO convertToDTO(Person person) {
+        PersonDTO personDTO = new PersonDTO(person);
+        return personDTO;
+    }
+
+    public List<PersonDTO> convertToDTO(List<Person> persons) {
+        List<PersonDTO> personDTOs = new ArrayList<>();
+        for (Person person : persons) {
+            personDTOs.add(convertToDTO(person));
+        }
+        return personDTOs;
     }
 }

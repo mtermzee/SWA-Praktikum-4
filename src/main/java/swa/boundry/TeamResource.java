@@ -42,11 +42,7 @@ public class TeamResource {
         if (teams.isEmpty()) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        List<TeamDTO> teamDTOs = new ArrayList<>();
-        for (Team team : teams) {
-            teamDTOs.add(new TeamDTO(team));
-        }
-        return Response.ok(teamDTOs).build();
+        return Response.ok(convertToDTO(teams)).build();
     }
 
     @GET
@@ -56,8 +52,7 @@ public class TeamResource {
         if (team == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        TeamDTO teamDTO = new TeamDTO(team);
-        return Response.ok(teamDTO).build();
+        return Response.ok(convertToDTO(team)).build();
     }
 
     @POST
@@ -91,4 +86,18 @@ public class TeamResource {
         this.teamService.deleteTeam(id);
         return Response.ok().build();
     }
+
+    public TeamDTO convertToDTO(Team team) {
+        TeamDTO teamDTO = new TeamDTO(team);
+        return teamDTO;
+    }
+
+    public List<TeamDTO> convertToDTO(List<Team> teams) {
+        List<TeamDTO> teamDTOs = new ArrayList<>();
+        for (Team team : teams) {
+            teamDTOs.add(convertToDTO(team));
+        }
+        return teamDTOs;
+    }
+
 }

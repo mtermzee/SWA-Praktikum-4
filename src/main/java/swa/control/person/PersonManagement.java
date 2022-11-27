@@ -14,5 +14,9 @@ public interface PersonManagement {
 
     public Person getTeamMember(int id);
 
-    public List<Person> getAllTeamMembers();
+    public List<Person> getAllTeamMembers(String name, String Type);
+
+    public List<Person> filterByPerson(List<Person> persons, String name);
+
+    public List<Person> filterByType(List<Person> persons, String type);
 }

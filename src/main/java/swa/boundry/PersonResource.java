@@ -37,10 +37,11 @@ public class PersonResource {
     }
 
     @GET
-    public Response getPersons() {
-        List<Person> persons = this.personService.getAllTeamMembers();
+    public Response getPersons(@QueryParam("filter[name]") String name,
+            @QueryParam("category[type]") String type) {
+        List<Person> persons = this.personService.getAllTeamMembers(name, type);
         if (persons.isEmpty()) {
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.status(Response.Status.NOT_FOUND).entity("not found!").type("text/plain").build();
         }
         return Response.ok(convertToDTO(persons)).build();
     }

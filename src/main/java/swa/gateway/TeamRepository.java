@@ -158,8 +158,37 @@ public class TeamRepository implements TeamManagement, PersonManagement {
     }
 
     @Override
-    public List<Person> getAllTeamMembers() {
-        return List.copyOf(persons.values());
+    public List<Person> getAllTeamMembers(String name, String Type) {
+        List<Person> filteredPersons = List.copyOf(persons.values());
+        if (name != null && !name.equals("")) {
+            filteredPersons = filterByPerson(filteredPersons, name);
+        }
+        if (Type != null && !Type.equals("")) {
+            filteredPersons = filterByType(filteredPersons, Type);
+        }
+        return filteredPersons;
+    }
+
+    @Override
+    public List<Person> filterByPerson(List<Person> persons, String name) {
+        List<Person> filteredPersons = new ArrayList<>();
+        for (Person person : persons) {
+            if (person.getName().toLowerCase().equals(name.toLowerCase())) {
+                filteredPersons.add(person);
+            }
+        }
+        return filteredPersons;
+    }
+
+    @Override
+    public List<Person> filterByType(List<Person> persons, String type) {
+        List<Person> filteredPersons = new ArrayList<>();
+        for (Person person : persons) {
+            if (person.getType().toLowerCase().equals(type.toLowerCase())) {
+                filteredPersons.add(person);
+            }
+        }
+        return filteredPersons;
     }
 
 }

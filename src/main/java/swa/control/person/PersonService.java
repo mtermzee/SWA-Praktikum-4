@@ -33,7 +33,7 @@ public class PersonService {
         return personManagement.getTeamMember(id);
     }
 
-    public List<Person> getAllTeamMembers() {
+    public List<Person> getAllTeamMembers(String name, String Type) {
         /*
          * List<Person> persons = personManagement.getAllTeamMembers();
          * List<PersonDTO> personDTOs = new ArrayList<>();
@@ -43,6 +43,6 @@ public class PersonService {
          * return personDTOs;
          */
 
-        return personManagement.getAllTeamMembers();
+        return personManagement.getAllTeamMembers(name, Type);
     }
 }

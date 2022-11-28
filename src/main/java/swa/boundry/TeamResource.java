@@ -55,7 +55,7 @@ public class TeamResource {
     public Response getTeamById(@PathParam("id") int id) {
         Team team = this.teamService.getTeam(id);
         if (team == null) {
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.status(Response.Status.NOT_FOUND).entity("not found!").type("text/plain").build();
         }
         Data data = showUnderData(convertToDTO(team));
         return Response.ok(data).build();
@@ -64,8 +64,11 @@ public class TeamResource {
     @POST
     @Path("{team}")
     public Response createTeam(@PathParam("team") String name, @QueryParam("category") String category) {
-        this.teamService.createTeam(name, category);
-        return Response.ok().build();
+        boolean result = this.teamService.createTeam(name, category);
+        if (result)
+            return Response.ok().entity("Team has been added to Team successfully").type("text/plain").build();
+
+        return Response.status(Response.Status.NOT_FOUND).entity("Team has been not added").type("text/plain").build();
     }
 
     @POST
@@ -82,22 +85,33 @@ public class TeamResource {
     @Path("{id}")
     public Response updateTeam(@PathParam("id") int id, @QueryParam("name") String name,
             @QueryParam("category") String category) {
-        this.teamService.updateTeam(id, name, category);
-        return Response.ok().build();
+        boolean result = this.teamService.updateTeam(id, name, category);
+        if (result)
+            return Response.ok().entity("Team has been updated successfully").type("text/plain").build();
+
+        return Response.status(Response.Status.NOT_FOUND).entity("Team has been not updated").type("text/plain")
+                .build();
     }
 
     @DELETE
     @Path("{id}")
     public Response deleteTeam(@PathParam("id") int id) {
-        this.teamService.deleteTeam(id);
-        return Response.ok().build();
+        boolean result = this.teamService.deleteTeam(id);
+        if (result)
+            return Response.ok().entity("Team has been removed successfully").type("text/plain").build();
+
+        return Response.status(Response.Status.NOT_FOUND).entity("Team has been not removed").type("text/plain")
+                .build();
     }
 
     @DELETE
     @Path("{teamID}/relationships/{playerID}")
     public Response deleteTeamMember(@PathParam("teamID") int teamID, @PathParam("playerID") int playerID) {
-        this.teamService.removeMemberFromTeam(teamID, playerID);
-        return Response.ok().build();
+        boolean result = this.teamService.removeMemberFromTeam(teamID, playerID);
+        if (result)
+            return Response.ok().entity("Person has been removed from Team successfully").type("text/plain").build();
+
+        return Response.status(Response.Status.NOT_FOUND).entity("Person or Team not found").type("text/plain").build();
     }
 
     public TeamDTO convertToDTO(Team team) {

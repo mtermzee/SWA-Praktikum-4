@@ -40,13 +40,29 @@ public class PersonResource {
 
     @GET
     public Response getPersons(@QueryParam("filter[name]") String name,
-            @QueryParam("category[type]") String type) {
+            @QueryParam("category[type]") String type, @QueryParam("page[number]") Integer number,
+            @QueryParam("page[size]") Integer size) {
+
         List<Person> persons = this.personService.getAllTeamMembers(name, type);
         if (persons.isEmpty()) {
             return Response.status(Response.Status.NOT_FOUND).entity("not found!").type("text/plain").build();
         }
 
-        Data data = showUnderData(convertToDTO(persons));
+        Data data;
+
+        if (number != null && size != null)
+        {
+            int personsAmount = persons.size();
+            persons = getPersonsForPage(persons, number, size);
+            data = showUnderData(convertToDTO(persons));
+            if (!persons.isEmpty())
+                data.setPageLinks(number, size, personsAmount, false);
+        }
+        else
+        {
+            data = showUnderData(convertToDTO(persons));
+        }
+
         return Response.ok(data).build();
     }
 
@@ -116,5 +132,18 @@ public class PersonResource {
     public Data showUnderData(PersonDTO personDTO) {
         Data data = new Data(personDTO);
         return data;
+    }
+
+    public List<Person> getPersonsForPage(List<Person> originalList, int pageNumber, int pageSize)
+    {
+        List<Person> resultList = new ArrayList<>();
+
+        for(int i = (pageNumber - 1) * pageSize; i < pageNumber * pageSize; i++)
+        {
+            if (i < originalList.size()) 
+                resultList.add(originalList.get(i));
+        }
+
+        return resultList;
     }
 }

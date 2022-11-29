@@ -42,12 +42,27 @@ public class TeamResource {
 
     @GET
     public Response getTeams(@QueryParam("filter[name]") String name,
-            @QueryParam("category[category]") String category, @QueryParam("included[included]") String included) {
+            @QueryParam("category[category]") String category, @QueryParam("included[included]") String included,
+            @QueryParam("page[number]") Integer number, @QueryParam("page[size]") Integer size) {
         List<Team> teams = this.teamService.getAllTeams(name, category);
         if (teams.isEmpty()) {
             return Response.status(Response.Status.NOT_FOUND).entity("not found!").type("text/plain").build();
         }
-        Data data = showUnderData(convertToDTO(teams));
+
+        Data data;
+
+        if (number != null && size != null)
+        {
+            int teamsAmount = teams.size();
+            teams = getTeamsForPage(teams, number, size);
+            data = showUnderData(convertToDTO(teams));
+            if (!teams.isEmpty())
+                data.setPageLinks(number, size, teamsAmount, true);
+        }
+        else
+        {
+            data = showUnderData(convertToDTO(teams));
+        }
 
         if (included != null) {
             addIncluded(data, included, teams);
@@ -190,4 +205,16 @@ public class TeamResource {
         return data;
     }
 
+    public List<Team> getTeamsForPage(List<Team> originalList, int pageNumber, int pageSize)
+    {
+        List<Team> resultList = new ArrayList<>();
+
+        for(int i = (pageNumber - 1) * pageSize; i < pageNumber * pageSize; i++)
+        {
+            if (i < originalList.size()) 
+                resultList.add(originalList.get(i));
+        }
+
+        return resultList;
+    }
 }

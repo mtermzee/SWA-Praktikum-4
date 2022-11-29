@@ -148,9 +148,10 @@ public class TeamResource {
 
     public Data addIncluded(Data data, String member, List<Team> teams) {
         for (Team team : teams) {
-            if (member.equals("manager")) {
+            if (member.contains("manager")) {
                 data.addIncludeElement(team.getManager());
-            } else if (member.equals("player")) {
+            }
+            if (member.contains("player")) {
                 data.addIncludeElements(team.getPlayers());
             }
         }

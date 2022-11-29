@@ -13,15 +13,19 @@ public class Relationship {
         this.players = new ArrayList<>();
     }
 
-    public Relationship(Person manager, List<Person> players) {
+    public Relationship(Person manager, List<Person> players, int teamId) {
         this.players = new ArrayList<>();
 
         if (manager != null) {
-            this.manager = new PersonDTO(manager, true);
+            PersonDTO personDTO = new PersonDTO(manager, true);
+            personDTO.setLinksForRelationship(teamId);
+            this.manager = personDTO;
         }
         if (players != null) {
             for (Person person : players) {
-                this.players.add(new PersonDTO(person, true));
+                PersonDTO personDTO = new PersonDTO(person, true);
+                personDTO.setLinksForRelationship(teamId);
+                this.players.add(personDTO);
             }
         }
     }

@@ -22,6 +22,7 @@ import swa.entity.Person;
 import swa.entity.Team;
 import swa.entity.dto.Data;
 import swa.entity.dto.DataObject;
+import swa.entity.dto.PersonDTO;
 import swa.entity.dto.TeamDTO;
 
 @Path("/Teams")
@@ -74,7 +75,9 @@ public class TeamResource {
         if (persons == null || persons.isEmpty()) {
             return Response.status(Response.Status.NOT_FOUND).entity("not found!").type("text/plain").build();
         }
-        return Response.ok(persons).build();
+
+        Data data = showUnderDataWithPersonDTO(convertToPersonDTO(persons), teamID);
+        return Response.ok(data).build();
     }
 
     @POST
@@ -143,10 +146,28 @@ public class TeamResource {
         return teamDTOs;
     }
 
+    public List<PersonDTO> convertToPersonDTO(List<Person> persons) {
+        List<PersonDTO> personDtos = new ArrayList<>();
+        for (Person person : persons) {
+            personDtos.add(new PersonDTO(person));
+        }
+        return personDtos;
+    }
+
     public Data showUnderData(List<TeamDTO> teamDTOs) {
         List<DataObject> dataObjects = new ArrayList<>();
         for (TeamDTO teamDTO : teamDTOs) {
             dataObjects.add(teamDTO);
+        }
+        Data data = new Data(dataObjects);
+        return data;
+    }
+
+    public Data showUnderDataWithPersonDTO(List<PersonDTO> personDTOs, int teamId) {
+        List<DataObject> dataObjects = new ArrayList<>();
+        for (PersonDTO person : personDTOs) {
+            person.setLinksForRelationship(teamId);
+            dataObjects.add(person);
         }
         Data data = new Data(dataObjects);
         return data;

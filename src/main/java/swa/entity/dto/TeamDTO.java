@@ -13,7 +13,7 @@ public class TeamDTO extends DataObject {
         this.type = "Team";
         this.attributes = new Attribute(other.getName(), other.getCatagory());
         if (other.getManager() != null || other.getPlayers() != null) {
-            this.relationships = new Relationship(other.getManager(), other.getPlayers());
+            this.relationships = new Relationship(other.getManager(), other.getPlayers(), this.id);
         }
         this.links = new Link();
         this.links.setSelf(URL + other.getId());

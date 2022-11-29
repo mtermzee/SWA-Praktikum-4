@@ -23,10 +23,15 @@ public class PersonDTO extends DataObject {
             this.name = other.getName();
             this.type = other.getType();
             this.links = new Link();
-            this.links.setSelf(RelURL + other.getId() + "/relationships/" + other.getType());
-            this.links.setRelated(URL + other.getId());
+            this.links.setSelf(URL + other.getId());
         } else
             new PersonDTO(other);
+    }
+
+    public void setLinksForRelationship(int teamId)
+    {
+        this.links.setSelf(RelURL + teamId + "/relationships/" + this.type);
+        this.links.setRelated(URL + this.id);
     }
 
     @Override

@@ -119,11 +119,9 @@ public class TeamRepository implements TeamManagement, PersonManagement {
 
     @Override
     public boolean createTeamMember(String name, String Type) {
-        System.out.println("createTeamMember");
         if (name == null || Type == null) {
             return false;
         }
-        System.out.println("nach if");
         Person person = new Person(availablePersonID++, name, Type);
         persons.put(person.getId(), person);
         return true;

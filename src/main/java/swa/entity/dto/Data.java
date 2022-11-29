@@ -40,7 +40,6 @@ public class Data {
         if (person != null) {
             PersonDTO pDto = new PersonDTO(person);
             included.add(pDto);
-            System.out.println("added: " + pDto);
         }
     }
 
@@ -48,7 +47,6 @@ public class Data {
         if (persons != null && !persons.isEmpty()) {
             for (Person person : persons) {
                 addIncludeElement(person);
-                System.out.println("added: " + person);
             }
         }
     }

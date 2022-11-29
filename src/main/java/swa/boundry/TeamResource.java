@@ -40,12 +40,17 @@ public class TeamResource {
 
     @GET
     public Response getTeams(@QueryParam("filter[name]") String name,
-            @QueryParam("category[category]") String category) {
+            @QueryParam("category[category]") String category, @QueryParam("included[included]") String included) {
         List<Team> teams = this.teamService.getAllTeams(name, category);
         if (teams.isEmpty()) {
             return Response.status(Response.Status.NOT_FOUND).entity("not found!").type("text/plain").build();
         }
         Data data = showUnderData(convertToDTO(teams));
+
+        if (included != null) {
+            addIncluded(data, included, teams);
+        }
+
         return Response.ok(data).build();
 
     }
@@ -138,6 +143,17 @@ public class TeamResource {
 
     public Data showUnderData(TeamDTO teamDTO) {
         Data data = new Data(teamDTO);
+        return data;
+    }
+
+    public Data addIncluded(Data data, String member, List<Team> teams) {
+        for (Team team : teams) {
+            if (member.equals("manager")) {
+                data.addIncludeElement(team.getManager());
+            } else if (member.equals("player")) {
+                data.addIncludeElements(team.getPlayers());
+            }
+        }
         return data;
     }
 

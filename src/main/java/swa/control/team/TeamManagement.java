@@ -2,6 +2,7 @@ package swa.control.team;
 
 import java.util.List;
 
+import swa.entity.Person;
 import swa.entity.Team;
 
 public interface TeamManagement {
@@ -19,6 +20,8 @@ public interface TeamManagement {
     public boolean addMemberToTeam(int teamId, int memberId);
 
     public boolean removeMemberFromTeam(int teamId, int memberId);
+
+    public List<Person> getMemberFromTeam(int teamId, String type);
 
     public List<Team> filterByName(List<Team> teams, String name);
 

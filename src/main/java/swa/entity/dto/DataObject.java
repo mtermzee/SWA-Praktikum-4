@@ -2,6 +2,7 @@ package swa.entity.dto;
 
 public abstract class DataObject {
     int id;
+    String name;
     String type;
     Attribute attributes;
     Relationship relationships;
@@ -9,6 +10,10 @@ public abstract class DataObject {
 
     public int getId() {
         return id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public String getType() {

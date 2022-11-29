@@ -96,6 +96,21 @@ public class TeamRepository implements TeamManagement, PersonManagement {
     }
 
     @Override
+    public List<Person> getMemberFromTeam(int teamId, String type) {
+        List<Person> filteredPersons = new ArrayList<>();
+        if (teams.containsKey(teamId)) {
+            Team team = teams.get(teamId);
+            if (type.toLowerCase().equals("manager")) {
+                filteredPersons.add(team.getManager());
+            } else if (type.toLowerCase().equals("player")) {
+                filteredPersons.addAll(team.getPlayers());
+            }
+            return filteredPersons;
+        }
+        return null;
+    }
+
+    @Override
     public List<Team> filterByName(List<Team> teams, String name) {
         List<Team> filteredTeams = new ArrayList<>();
         for (Team team : teams) {

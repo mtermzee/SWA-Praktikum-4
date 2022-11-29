@@ -18,6 +18,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import swa.control.team.TeamService;
+import swa.entity.Person;
 import swa.entity.Team;
 import swa.entity.dto.Data;
 import swa.entity.dto.DataObject;
@@ -64,6 +65,16 @@ public class TeamResource {
         }
         Data data = showUnderData(convertToDTO(team));
         return Response.ok(data).build();
+    }
+
+    @GET
+    @Path("{teamID}/relationships/{type}")
+    public Response getRelationships(@PathParam("teamID") int teamID, @PathParam("type") String type) {
+        List<Person> persons = this.teamService.getMemberFromTeam(teamID, type);
+        if (persons == null || persons.isEmpty()) {
+            return Response.status(Response.Status.NOT_FOUND).entity("not found!").type("text/plain").build();
+        }
+        return Response.ok(persons).build();
     }
 
     @POST

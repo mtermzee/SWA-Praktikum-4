@@ -5,6 +5,7 @@ import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
+import swa.entity.Person;
 import swa.entity.Team;
 
 @ApplicationScoped
@@ -38,5 +39,9 @@ public class TeamService {
 
     public boolean removeMemberFromTeam(int teamId, int memberId) {
         return teamManagement.removeMemberFromTeam(teamId, memberId);
+    }
+
+    public List<Person> getMemberFromTeam(int teamId, String type) {
+        return teamManagement.getMemberFromTeam(teamId, type);
     }
 }

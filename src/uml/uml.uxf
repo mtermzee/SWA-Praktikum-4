@@ -1,42 +1,57 @@
-<diagram program="umletino" version="15.0.0"><zoom_level>6</zoom_level><element><id>UMLPackage</id><coordinates><x>60</x><y>276</y><w>1686</w><h>642</h></coordinates><panel_attributes>ECB
+<diagram program="umletino" version="15.0.0"><zoom_level>14</zoom_level><element><id>UMLPackage</id><coordinates><x>0</x><y>0</y><w>3934</w><h>1568</h></coordinates><panel_attributes>ECB
 --
-bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>102</x><y>414</y><w>234</w><h>396</h></coordinates><panel_attributes>boundry
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>98</x><y>168</y><w>546</w><h>1274</h></coordinates><panel_attributes>boundry
 --
-bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>384</x><y>348</y><w>492</w><h>546</h></coordinates><panel_attributes>control
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>756</x><y>168</y><w>1148</w><h>1274</h></coordinates><panel_attributes>control
 --
-bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>912</x><y>348</y><w>360</w><h>546</h></coordinates><panel_attributes>entity
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>1988</x><y>168</y><w>840</w><h>1274</h></coordinates><panel_attributes>entity
 --
-bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>1320</x><y>348</y><w>384</w><h>546</h></coordinates><panel_attributes>gatweay
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>2940</x><y>168</y><w>896</w><h>1274</h></coordinates><panel_attributes>gatweay
 --
-bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>150</x><y>504</y><w>126</w><h>42</h></coordinates><panel_attributes>PersonResource 
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>948</x><y>624</y><w>126</w><h>48</h></coordinates><panel_attributes>Person
---
--id : int
--name : String
--author : String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>954</x><y>732</y><w>126</w><h>48</h></coordinates><panel_attributes>Team
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>210</x><y>476</y><w>294</w><h>224</h></coordinates><panel_attributes>PersonResource 
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2492</x><y>938</y><w>294</w><h>112</h></coordinates><panel_attributes>Person
 --
 -id : int
 -name : String
--author : String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1452</x><y>678</y><w>126</w><h>42</h></coordinates><panel_attributes>MocktailRepository
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1008</x><y>666</y><w>24</w><h>78</h></coordinates><panel_attributes>lt=&lt;-
-m1=n
-m2=1</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>150</x><y>696</y><w>126</w><h>42</h></coordinates><panel_attributes>TeamResource
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>414</x><y>402</y><w>444</w><h>228</h></coordinates><panel_attributes>Person
+-author : String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2030</x><y>938</y><w>294</w><h>112</h></coordinates><panel_attributes>Team
 --
-bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>414</x><y>660</y><w>444</w><h>216</h></coordinates><panel_attributes>team
+-id : int
+-name : String
+-author : String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>3220</x><y>672</y><w>294</w><h>238</h></coordinates><panel_attributes>TeamRepository
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2310</x><y>994</y><w>210</w><h>56</h></coordinates><panel_attributes>lt=&lt;-
+m1=1..n
+m2=0</panel_attributes><additional_attributes>130;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>224</x><y>1078</y><w>294</w><h>252</h></coordinates><panel_attributes>TeamResource
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>826</x><y>294</y><w>1036</w><h>532</h></coordinates><panel_attributes>Person
 --
-bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1092</x><y>684</y><w>150</w><h>24</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>230;20;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1212</x><y>582</y><w>252</w><h>132</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;270;10;270;200;400;200</additional_attributes></element><element><id>UMLClass</id><coordinates><x>438</x><y>474</y><w>174</w><h>84</h></coordinates><panel_attributes>&lt;&lt;Service&gt;&gt;
-MocktailService
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>826</x><y>896</y><w>1036</w><h>504</h></coordinates><panel_attributes>team
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>432</x><y>738</y><w>192</w><h>90</h></coordinates><panel_attributes>&lt;&lt;Service&gt;&gt;
-IngredientService
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2156</x><y>784</y><w>1092</w><h>182</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;110;10;10;760;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1554</x><y>84</y><w>1834</w><h>616</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;270;10;10;1290;10;1290;420</additional_attributes></element><element><id>UMLClass</id><coordinates><x>882</x><y>462</y><w>308</w><h>196</h></coordinates><panel_attributes>&lt;&lt;Service&gt;&gt;
+PersonService 
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>564</x><y>510</y><w>96</w><h>90</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;130;140;130;80;10</additional_attributes></element><element><id>Relation</id><coordinates><x>618</x><y>798</y><w>36</w><h>66</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>40;90;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>270</x><y>516</y><w>180</w><h>18</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>280;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>270</x><y>714</y><w>174</w><h>96</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>270;140;160;140;160;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>666</x><y>474</y><w>174</w><h>84</h></coordinates><panel_attributes>&lt;&lt;Service&gt;&gt;
-MocktailService
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>868</x><y>1078</y><w>322</w><h>210</h></coordinates><panel_attributes>&lt;&lt;Service&gt;&gt;
+TeamService
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>654</x><y>738</y><w>192</w><h>90</h></coordinates><panel_attributes>&lt;&lt;Service&gt;&gt;
-IngredientService
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1176</x><y>546</y><w>154</w><h>42</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>90;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1176</x><y>1190</y><w>140</w><h>42</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>80;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>490</x><y>560</y><w>420</w><h>42</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>280;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>490</x><y>1204</y><w>406</w><h>42</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>270;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1302</x><y>462</y><w>532</w><h>238</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+PersonManagement
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>942</x><y>390</y><w>270</w><h>144</h></coordinates><panel_attributes>dto
++createTeamMember(String name, String Type);
++boolean deleteTeamMember(int id);
++boolean updateTeamMember(int id, String name, String Type);
++Person getTeamMember(int id);
++List&lt;Person&gt; getAllTeamMembers(String name, String Type);
++List&lt;Person&gt; filterByPerson(List&lt;Person&gt; persons, String name);
++List&lt;Person&gt; filterByType(List&lt;Person&gt; persons, String type);</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1288</x><y>1008</y><w>546</w><h>294</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+TeamManagement
 --
-bg=orange</panel_attributes><additional_attributes></additional_attributes></element></diagram>
++boolean createTeam(String name, String catagory);
++boolean deleteTeam(int id);
++boolean updateTeam(int id, String name, String catagory);
++Team getTeam(int id);
++List&lt;Team&gt; getAllTeams(String name, String catagory);
++boolean addMemberToTeam(int teamId, int memberId);
++boolean removeMemberFromTeam(int teamId, int memberId);
++List&lt;Person&gt; getMemberFromTeam(int teamId, String type);
++ List&lt;Team&gt; filterByName(List&lt;Team&gt; teams, String name);
++ List&lt;Team&gt; filterByCategory(List&lt;Team&gt; teams, String category);</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>2086</x><y>266</y><w>630</w><h>420</h></coordinates><panel_attributes>dto
+--
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1540</x><y>896</y><w>1848</w><h>644</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;290;10;440;1300;430;1300;10</additional_attributes></element><element><id>Relation</id><coordinates><x>2618</x><y>784</y><w>42</w><h>182</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;110;10;10</additional_attributes></element></diagram>
